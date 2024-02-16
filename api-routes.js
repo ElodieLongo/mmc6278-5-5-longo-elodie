@@ -4,10 +4,11 @@ const db = require('./db')
 router
   .route('/inventory')
   // TODO: Create a GET route that returns a list of everything in the inventory table
-  app.get(async (req, res) => {
+  .get(async (req, res) => {
     try {
     const [inventory] = await db.query(`SELECT * FROM inventory`);
-    res.json(inventory);
+    console.log (res.json(inventory));
+    return res.json(inventory);
   } catch (err) {
     res.status(500).json({ error: "not found"});
   }
@@ -28,8 +29,9 @@ router
   // ]
 
   // TODO: Create a POST route that inserts inventory items
-  app.post( '/inventory', async (req, res) => {
-   res.send('')
+  router.post( '/inventory', async (req, res) => {
+    console.log (req.body)
+   res.send()
   })
   // This route will accept price, quantity, name, image, and description as JSON
   // in the request body.
